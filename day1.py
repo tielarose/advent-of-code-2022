@@ -4,9 +4,21 @@ import sys
 def calculate_most_calories(filepath):
     """given a file of calories carried by elves, return the greatest number of calories
 
-    input format:
-        one integer per line
-        blank lines represent a new elf"""
+    input example:
+        1000
+        2000
+
+        3000
+
+        450
+        3000
+
+        blank lines represent a new elf; in the example above:
+        the first elf is carrying 3000 calories (1000+2000)
+        the second elf is carrying 3000 calories
+        the third elf is carrying 3450 calories
+
+        this function would return the integer 3450"""
 
     file = open(filepath)
 
