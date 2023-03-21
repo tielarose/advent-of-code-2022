@@ -102,3 +102,29 @@ def total_points_from_strategy_file(filepath):
         points_total += round_points
 
     return points_total
+
+
+def total_points_from_strategy_file_v2(filepath):
+    """processes a file of game strategy, returns a point total"""
+
+    file = open(filepath)
+
+    points_total = 0
+
+    round_value = {
+        ('A', 'X'): 3,  # rock, scissors, lose -> (3 + 0 = 3)
+        ('A', 'Y'): 4,  # rock, rock, draw -> (1 + 3 = 4)
+        ('A', 'Z'): 8,  # rock, paper, win -> (2 + 6 = 8)
+        ('B', 'X'): 1,  # paper, rock, lose -> (1 + 0 = 1)
+        ('B', 'Y'): 5,  # paper, paper, draw -> (2 + 3 = 5)
+        ('B', 'Z'): 9,  # paper, scissors, win -> (3 + 6 = 9)
+        ('C', 'X'): 2,  # scissors, paper, lose -> (2 + 0 = 2)
+        ('C', 'Y'): 6,  # scissors, scissors, draw -> (3 + 3 = 6)
+        ('C', 'Z'): 7}  # scissors, rock, win -> (1 + 6 = 7)
+
+    for line in file:
+        line = line.rstrip().split()
+        round_points = round_value[(line[0], line[1])]
+        points_total += round_points
+
+    return points_total
